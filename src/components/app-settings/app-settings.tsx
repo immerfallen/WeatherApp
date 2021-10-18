@@ -1,4 +1,6 @@
 import { Component, h, State } from '@stencil/core';
+import { Geolocation } from "@capacitor/geolocation"
+
 
 @Component({
   tag: 'app-settings',
@@ -6,10 +8,14 @@ import { Component, h, State } from '@stencil/core';
   shadow: true,
 })
 export class AppSettings {
-
   @State() useCurrentLocation: boolean = true
   @State() presetLocation: string = "Adelaide"
   @State() unit: string = "celsius"
+
+  async componentDidLoad(){
+    let coordinates = await Geolocation.getCurrentPosition()
+    console.log(coordinates)
+  }
 
   render() {
     return ([
