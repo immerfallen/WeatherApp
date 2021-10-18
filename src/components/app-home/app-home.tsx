@@ -10,7 +10,6 @@ import { Geolocation } from "@capacitor/geolocation"
 export class AppHome {
 async componentDidLoad(){
   let coordinates = await Geolocation.getCurrentPosition()
-  console.log(coordinates)
   await SettingsData.setCoords(coordinates.coords.latitude, coordinates.coords.longitude)
 }
 
